@@ -1,5 +1,3 @@
-// Client side C/C++ program to demonstrate Socket
-// programming
 #include <arpa/inet.h>
 #include <stdio.h>
 #include <string.h>
@@ -11,7 +9,6 @@ int client(char * hello)
 {
 	int status, valread, client_fd;
 	struct sockaddr_in serv_addr;
-	// char* hello = "Hello from client";
 	char buffer[1024] = { 0 };
 	if ((client_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
 		return -1;
