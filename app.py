@@ -25,10 +25,8 @@ class StringInputApp:
         self.send_button.grid(row=3, column=0, pady=10)
 
     def send_action(self):
-        # Get the entered text from the Entry widget
         self.mess = self.input_entry.get()
 
-        # Perform an action with the entered text (replace this with your desired action)
         if self.mess:
             self.root.destroy()
         else:
@@ -50,31 +48,25 @@ class CustomInputDialog:
         self.dialog = tk.Toplevel(parent)
         self.dialog.title("Custom Input")
 
-        # Label and Entry for user input
         self.prompt_label = tk.Label(self.dialog, text=prompt)
         self.prompt_label.grid(row=0, column=0, padx=10, pady=5)
 
         self.input_entry = tk.Entry(self.dialog)
         self.input_entry.grid(row=1, column=0, padx=10, pady=5)
 
-        # OK button to confirm the input
         self.ok_button = tk.Button(self.dialog, text="OK", command=self.on_ok_button)
         self.ok_button.grid(row=2, column=0, pady=10)
 
-        # Variable to store the entered value
         self.result = None
 
     def on_ok_button(self):
-        # Get the user input from the Entry widget
         user_input = self.input_entry.get()
 
-            # If the input is a valid integer, store it in the result variable
         self.result = user_input
         
         self.dialog.destroy()
 
     def show_dialog(self):
-        # Wait for the dialog to be closed
         self.dialog.wait_window()
 
 class ArrayDisplayApp:
@@ -86,7 +78,6 @@ class ArrayDisplayApp:
         self.rows = len(array)
         self.columns = len(array[0])
 
-        # Variable to store the selected row index
         self.selected_row_var = tk.IntVar()
         self.selected_row = None
         self.result = None
@@ -101,7 +92,6 @@ class ArrayDisplayApp:
         self.create_widgets()
 
     def create_widgets(self):
-        # Create heading labels for each column
         heading = ["Name of Driver", "Mobile No", "Cab Number", "Rating"]
         for j in range(self.columns):
             heading_label = tk.Label(self.root, text=heading[j], borderwidth=1, relief="solid", width=2*len(heading[j]), height=2, fg="blue", font=("Helvetica", 11, "bold"))
@@ -113,16 +103,13 @@ class ArrayDisplayApp:
             radio_button = tk.Radiobutton(self.root, variable=self.selected_row_var, value=i + 1)
             radio_button.grid(row=i+1, column=0, sticky=tk.W)
 
-            # Display array elements in labels
             for j, element in enumerate(array):
                 label = tk.Label(self.root, text=str(element), borderwidth=1, relief="solid", width=2*len(heading[j]), height=2)
                 label.grid(row=i+1, column=j+1)
 
     def on_ok_button(self):
-        # Get the selected row index
         self.selected_row = self.selected_row_var.get()
 
-        # Create and show the custom input dialog
         custom_input_dialog1 = CustomInputDialog(self.root, "Estimated duration in minutes:")
         custom_input_dialog1.show_dialog()
 
@@ -132,10 +119,8 @@ class ArrayDisplayApp:
         custom_input_dialog3 = CustomInputDialog(self.root, "End location:")
         custom_input_dialog3.show_dialog()
 
-        # Retrieve the result from the custom input dialog
         self.result = [custom_input_dialog1.result, custom_input_dialog2.result, custom_input_dialog3.result]
 
-        # Close the Tkinter window
         self.root.destroy()
 
 if __name__ == "__main__":
