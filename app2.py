@@ -7,9 +7,7 @@ class StringInputApp:
         self.root = root
         self.root.title("Traveler Companion")
         self.mess = None
-        # self.root.title("String Input App")
 
-        # Entry widget for text input
         self.input_entry = tk.Entry(self.root, width=30)
         self.input_entry.grid(row=0, column=0, padx=10, pady=10)
 
@@ -27,17 +25,13 @@ class StringInputApp:
         
 
     def send_action(self):
-        # Get the entered text from the Entry widget
         self.mess = self.input_entry.get()
 
-        # Perform an action with the entered text (replace this with your desired action)
         self.root.destroy()
     
     def recieve_action(self):
-        # Get the entered text from the Entry widget
         self.mess = " "
 
-        # Perform an action with the entered text (replace this with your desired action)
         self.root.destroy()
 
 
@@ -67,10 +61,6 @@ if __name__ == "__main__":
         if(app.mess is None):
             my_functions.client("")
             time.sleep(30)
-            # app2.mess = message
         else:
             msg = app.mess.encode('utf-8')
             my_functions.client(msg)
-
-
-
